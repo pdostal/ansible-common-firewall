@@ -1,0 +1,3 @@
+- name: firewall
+  hosts: all
+  sudo: true
