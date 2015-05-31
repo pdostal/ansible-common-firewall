@@ -2,7 +2,7 @@
   lineinfile: dest=/etc/rc.conf regexp=^firewall_enable= line=firewall_enable=YES
   notify: Reload ipfw
 - name: Set firewall type
-  lineinfile: dest=/etc/rc.conf regexp=^firewall_type= line=firewall_type=open
+  lineinfile: dest=/etc/rc.conf regexp=^firewall_type= line=firewall_type=clossed
   notify: Reload ipfw
 - name: Enable firewall logging
   lineinfile: dest=/etc/rc.conf regexp=^firewall_logging= line=firewall_logging=YES
