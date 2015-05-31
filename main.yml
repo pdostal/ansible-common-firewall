@@ -4,3 +4,4 @@
   roles:
   - { role: debian, when: ansible_distribution == 'Debian' }
   - { role: centos, when: ansible_distribution == 'CentOS' }
+  - { role: freebsd, when: ansible_distribution == 'FreeBSD' }
