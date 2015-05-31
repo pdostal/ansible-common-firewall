@@ -1,0 +1,20 @@
+- name: Install iptables (Debian)
+  apt: name={{ item }} state=latest force=yes
+  with_items:
+  - iptables
+  - netfilter-persistent
+  notify: restart iptables
+
+- name: Paste ip4tables config
+  template: >
+    src={{ inventory_hostname }}4
+    dest=/etc/iptables/rules.v4
+    mode=0744
+  notify: restart iptables
+
+- name: Paste ip6tables config
+  template: >
+    src={{ inventory_hostname }}6
+    dest=/etc/iptables/rules.v6
+    mode=0744
+  notify: restart iptables

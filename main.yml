@@ -1,3 +1,5 @@
 - name: firewall
   hosts: all
   sudo: true
+  roles:
+  - { role: debian, when: ansible_distribution == 'Debian' }
