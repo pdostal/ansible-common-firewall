@@ -1,0 +1,23 @@
+- name: Disable firewalld
+  service: name=firewalld state=stopped enabled=no
+
+- name: Install iptables
+  yum: name={{ item }} state=latest
+  with_items:
+  - iptables
+  - iptables-services
+  notify: restart iptables
+
+- name: Paste ip4tables config
+  template: >
+    src={{ inventory_hostname }}4
+    dest=/etc/sysconfig/iptables
+    mode=0744
+  notify: restart iptables
+
+- name: Paste ip6tables config
+  template: >
+    src={{ inventory_hostname }}6
+    dest=/etc/sysconfig/ip6tables
+    mode=0744
+  notify: restart iptables
