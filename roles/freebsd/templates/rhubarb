@@ -9,10 +9,10 @@ ipfw -q add 00750 check-state
 
 ipfw -q add 00800 allow all from any to any out via vtnet0 keep-state
 
-ipfw -q add 01000 allow icmp from any to me in setup
-ipfw -q add 01001 allow tcp from any to me 22 in setup
-ipfw -q add 01002 allow tcp from any to me 25 in setup
-ipfw -q add 01003 allow tcp from any to me 53 in setup
-ipfw -q add 01004 allow udp from any to me 53 in setup
-ipfw -q add 01005 allow tcp from any to me 80 in setup
-ipfw -q add 01006 allow udp from any to me 60000-61000 in setup
+ipfw -q add 01000 allow icmp from any to me in keep-state
+ipfw -q add 01001 allow tcp from any to me 22 in keep-state
+ipfw -q add 01002 allow tcp from any to me 25 in keep-state
+ipfw -q add 01003 allow tcp from any to me 53 in keep-state
+ipfw -q add 01004 allow udp from any to me 53 in keep-state
+ipfw -q add 01005 allow tcp from any to me 80 in keep-state
+ipfw -q add 01006 allow udp from any to me 60000-61000 in keep-state
