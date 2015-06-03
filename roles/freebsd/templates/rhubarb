@@ -5,15 +5,14 @@ ipfw -q -f flush
 ipfw -q add 00005 allow all from any to any via lo0
 ipfw -q add 00010 allow all from any to any via tap0
 
-ipfw -q add 00751 allow tcp from any to any established
-ipfw -q add 00752 allow all from any to any out keep-state
+ipfw -q add 00750 check-state
 
-ipfw -q add 00800 allow all from any to any out via vtnet0
+ipfw -q add 00800 allow all from any to any out via vtnet0 keep-state
 
-ipfw -q add 01000 allow icmp from any to any in
-ipfw -q add 01001 allow tcp from any to any 22 in
-ipfw -q add 01002 allow tcp from any to any 25 in
-ipfw -q add 01003 allow tcp from any to any 53 in
-ipfw -q add 01004 allow udp from any to any 53 in
-ipfw -q add 01005 allow tcp from any to any 80 in
-ipfw -q add 01006 allow udp from any to any 60000-61000 in
+ipfw -q add 01000 allow icmp from any to me in setup
+ipfw -q add 01001 allow tcp from any to me 22 in setup
+ipfw -q add 01002 allow tcp from any to me 25 in setup
+ipfw -q add 01003 allow tcp from any to me 53 in setup
+ipfw -q add 01004 allow udp from any to me 53 in setup
+ipfw -q add 01005 allow tcp from any to me 80 in setup
+ipfw -q add 01006 allow udp from any to me 60000-61000 in setup
