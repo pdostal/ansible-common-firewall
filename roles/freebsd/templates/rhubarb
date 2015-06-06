@@ -17,6 +17,6 @@ ipfw -q add 01003 allow tcp from any to any 25 in keep-state
 ipfw -q add 01004 allow tcp from any to any 53 in keep-state
 ipfw -q add 01005 allow udp from any to any 53 in keep-state
 ipfw -q add 01006 allow tcp from any to any 80 in keep-state
-ipfw -q add 01007 allow tcp from any to any 587 keep-state
+ipfw -q add 01007 allow tcp from any to any 465 keep-state
 ipfw -q add 01008 allow tcp from any to any 993 keep-state
 ipfw -q add 01009 allow udp from any to any 60000-61000 in keep-state
