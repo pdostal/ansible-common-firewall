@@ -5,6 +5,13 @@
   - netfilter-persistent
   notify: restart iptables
 
+- name: Creates iptables/ directory
+  file: >
+    path=/etc/iptables
+    state=directory
+    mode=0744
+  notify: restart iptables
+
 - name: Paste ip4tables config
   template: >
     src={{ inventory_hostname }}4
