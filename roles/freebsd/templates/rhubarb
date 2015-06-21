@@ -12,11 +12,11 @@ ipfw -q add 00701 allow ip6 from any to any out keep-state
 
 ipfw -q add 01000 allow icmp from any to any in keep-state
 ipfw -q add 01001 allow ipv6-icmp from any to any keep-state
-ipfw -q add 01002 allow tcp from any to any 22 in keep-state
 ipfw -q add 01003 allow tcp from any to any 25 in keep-state
 ipfw -q add 01004 allow tcp from any to any 53 in keep-state
 ipfw -q add 01005 allow udp from any to any 53 in keep-state
 ipfw -q add 01006 allow tcp from any to any 80 in keep-state
 ipfw -q add 01007 allow tcp from any to any 587 keep-state
 ipfw -q add 01008 allow tcp from any to any 993 keep-state
+ipfw -q add 01002 allow tcp from any to any 63022 in keep-state
 ipfw -q add 01009 allow udp from any to any 60000-61000 in keep-state
