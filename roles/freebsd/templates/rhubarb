@@ -17,7 +17,5 @@ ipfw -q add allow udp from any to any 53 keep-state
 ipfw -q add allow tcp from any to any 80 keep-state
 ipfw -q add allow tcp from any to any 143 keep-state
 ipfw -q add allow tcp from any to any 587 keep-state
-ipfw -q add allow tcp from any to any 5060 keep-state
-ipfw -q add allow udp from any to any 5060 keep-state
 ipfw -q add allow tcp from any to any 63022 keep-state
 ipfw -q add allow udp from any to any 60000-61000 keep-state

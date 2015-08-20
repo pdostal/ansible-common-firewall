@@ -11,6 +11,8 @@
 -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
 -A INPUT -p udp -m udp --dport 1194 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 5060 -j ACCEPT
+-A INPUT -p udp -m udp --dport 5060 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 63022 -j ACCEPT
 -A INPUT -p udp -m udp --dport 60000:61000 -j ACCEPT
 -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
