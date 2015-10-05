@@ -3,6 +3,7 @@
 :FORWARD DROP [0:0]
 :OUTPUT ACCEPT [0:0]
 -A INPUT -i lo -j ACCEPT
+-A INPUT -i tun0 -j ACCEPT
 -A INPUT -i tap0 -j ACCEPT
 -A INPUT -p ipv6-icmp -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 25 -j ACCEPT
