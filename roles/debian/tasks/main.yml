@@ -1,3 +1,16 @@
+- name: Set IPv4 forwarding
+  lineinfile: >
+    dest=/etc/sysctl.conf
+    regexp='^net\.ipv4\.ip_forward'
+    line='net.ipv4.ip_forward = 1'
+  notify: reload sysctl
+- name: Set IPv6 forwarding
+  lineinfile: >
+    dest=/etc/sysctl.conf
+    regexp='^net\.ipv6\.conf\.all\.forwarding'
+    line='net.ipv6.conf.all.forwarding=1'
+  notify: reload sysctl
+
 - name: Install iptables
   apt: name={{ item }} state=latest force=yes
   with_items:
