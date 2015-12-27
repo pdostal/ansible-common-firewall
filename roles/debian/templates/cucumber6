@@ -12,8 +12,6 @@
 -A INPUT -p tcp -m tcp --dport 80 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 443 -j ACCEPT
 -A INPUT -p udp -m udp --dport 1194 -j ACCEPT
--A INPUT -p udp -m udp --dport 500 -j ACCEPT
--A INPUT -p udp -m udp --dport 4500 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 5060 -j ACCEPT
 -A INPUT -p udp -m udp --dport 5060 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 63022 -j ACCEPT
