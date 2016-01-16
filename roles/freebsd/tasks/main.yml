@@ -13,7 +13,7 @@
 
 - name: Set enable gateway
   notify: Reload natd
-  lineinfile: dest=/etc/rc.conf regexp=^gateway_enable= line=gateway_enable=YES
+  lineinfile: dest=/etc/rc.conf regexp=^gateway_enable= line=gateway_enable=NO
 - name: Set enable natd
   notify: Reload natd
   lineinfile: dest=/etc/rc.conf regexp=^natd_enable= line=natd_enable=NO
