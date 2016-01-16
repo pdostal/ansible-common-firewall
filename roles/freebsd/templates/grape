@@ -10,9 +10,6 @@ ipfw -q divert natd ip from any to any out via vtnet0
 
 ipfw -q add check-state
 
-ipfw -q add allow all from any to any established
-ipfw -q add allow all from any to any out keep-state
-
 ipfw -q add allow icmp from any to any keep-state
 ipfw -q add allow ipv6-icmp from any to any keep-state
 ipfw -q add allow tcp from any to any 80 keep-state

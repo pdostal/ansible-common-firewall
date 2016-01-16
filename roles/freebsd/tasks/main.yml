@@ -16,7 +16,7 @@
   lineinfile: dest=/etc/rc.conf regexp=^gateway_enable= line=gateway_enable=YES
 - name: Set enable natd
   notify: Reload natd
-  lineinfile: dest=/etc/rc.conf regexp=^natd_enable= line=natd_enable=YES
+  lineinfile: dest=/etc/rc.conf regexp=^natd_enable= line=natd_enable=NO
 - name: Set natd interface
   notify: Reload natd
   lineinfile: dest=/etc/rc.conf regexp=^natd_interface= line=natd_interface=vtnet0
