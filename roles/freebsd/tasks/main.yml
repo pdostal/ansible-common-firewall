@@ -11,6 +11,19 @@
   notify: Reload ipfw
   lineinfile: dest=/etc/rc.conf regexp=^firewall_script= line=firewall_script=/etc/ipfw.rules
 
+- name: Set enable gateway
+  notify: Reload natd
+  lineinfile: dest=/etc/rc.conf regexp=^gateway_enable= line=gateway_enable=YES
+- name: Set enable natd
+  notify: Reload natd
+  lineinfile: dest=/etc/rc.conf regexp=^natd_enable= line=natd_enable=YES
+- name: Set natd interface
+  notify: Reload natd
+  lineinfile: dest=/etc/rc.conf regexp=^natd_interface= line=natd_interface=vtnet0
+- name: Set natd flags
+  notify: Reload natd
+  lineinfile: dest=/etc/rc.conf regexp=^natd_flags= line='natd_flags="-dynamic -m"'
+
 - name: Paste ipfw config
   template:
     src={{ ansible_hostname }}

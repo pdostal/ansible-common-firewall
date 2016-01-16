@@ -5,7 +5,11 @@ ipfw -q -f flush
 ipfw -q add allow all from any to any via lo0
 ipfw -q add allow all from any to any via tap0
 
+ipfw -q divert natd ip from any to any in via vtnet0
+ipfw -q divert natd ip from any to any out via vtnet0
+
 ipfw -q add check-state
+
 ipfw -q add allow all from any to any established
 ipfw -q add allow all from any to any out keep-state
 
