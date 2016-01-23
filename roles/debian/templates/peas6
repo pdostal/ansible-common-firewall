@@ -9,6 +9,5 @@
 -A INPUT -p tcp -m tcp --dport 63022 -j ACCEPT
 -A INPUT -p udp -m udp --dport 60000:61000 -j ACCEPT
 -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
--A FORWARD -i tap0 -o eth0 -j ACCEPT
 -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
 COMMIT

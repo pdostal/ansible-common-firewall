@@ -1,6 +1,6 @@
 *filter
 :INPUT DROP [0:0]
-:FORWARD DROP [0:0]
+:FORWARD ACCEPT [0:0]
 :OUTPUT ACCEPT [0:0]
 -A INPUT -i lo -j ACCEPT
 -A INPUT -i tap0 -j ACCEPT
@@ -10,6 +10,7 @@
 -A INPUT -p tcp -m tcp --dport 63022 -j ACCEPT
 -A INPUT -p udp -m udp --dport 60000:61000 -j ACCEPT
 -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
+-A FORWARD -i tap0 -o eth0 -j ACCEPT
 -A FORWARD -i tap0 -o tun3 -j ACCEPT
 -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
 COMMIT
@@ -19,4 +20,5 @@ COMMIT
 :OUTPUT ACCEPT [1:60]
 :POSTROUTING ACCEPT [1:60]
 -A POSTROUTING -o tun3 -j SNAT --to 10.10.10.40
+-A POSTROUTING -o eth0 -j SNAT --to 81.2.245.250
 COMMIT
