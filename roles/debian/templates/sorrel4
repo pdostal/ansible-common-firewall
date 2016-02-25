@@ -11,8 +11,6 @@
 -A INPUT -p tcp -m tcp --dport 63022 -j ACCEPT
 -A INPUT -p udp -m udp --dport 60000:61000 -j ACCEPT
 -A INPUT -m state --state RELATED,ESTABLISHED -j ACCEPT
--A FORWARD -i tap0 -o eth0 -j ACCEPT
--A FORWARD -i tap0 -o eth1 -j ACCEPT
 -A FORWARD -m state --state RELATED,ESTABLISHED -j ACCEPT
 COMMIT
 *nat
@@ -20,6 +18,4 @@ COMMIT
 :INPUT ACCEPT [0:0]
 :OUTPUT ACCEPT [0:0]
 :POSTROUTING ACCEPT [0:0]
--A POSTROUTING -o eth0 -j SNAT --to 46.101.174.83
--A POSTROUTING -o eth1 -j SNAT --to 10.135.254.36
 COMMIT
