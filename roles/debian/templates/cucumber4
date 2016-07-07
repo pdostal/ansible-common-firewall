@@ -15,10 +15,12 @@
 -A INPUT -p tcp -m tcp --dport 80 -m comment --comment "Allow HTTP" -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 443 -m comment --comment "Allow HTTPS" -j ACCEPT
 -A INPUT -p udp -m udp --dport 1194 -m comment --comment "Allow OVPN" -j ACCEPT
+-A INPUT -i docker0 -p tcp -m tcp --dport 3306 -m comment --comment "Allow MySQL from docker0" -j ACCEPT
 -A INPUT -p udp -m udp --dport 60000:61000 -m comment --comment "Allow MOSH" -j ACCEPT
 -A INPUT -m state --state RELATED,ESTABLISHED -m comment --comment "Allow established" -j ACCEPT
 -A FORWARD -i tun0 -m comment --comment "Allow tun0" -j ACCEPT
 -A FORWARD -i tap0 -m comment --comment "Allow tap0" -j ACCEPT
+-A FORWARD -i docker0 -m comment --comment "Allow docker0" -j ACCEPT
 -A FORWARD -m state --state RELATED,ESTABLISHED -m comment --comment "Allow established" -j ACCEPT
 COMMIT
 *nat
