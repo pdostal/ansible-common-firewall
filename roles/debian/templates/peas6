@@ -7,6 +7,7 @@
 -A INPUT -p ipv6-icmp -m comment --comment "Allow ICMP" -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 22 -m comment --comment "Allow SSH" -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 80 -m comment --comment "Allow HTTP" -j ACCEPT
+-A INPUT -p udp -m udp --dport 1194 -m comment --comment "Allow OpenVPN" -j ACCEPT
 -A INPUT -p udp -m udp --dport 60000:61000 -m comment --comment "Allow MOSH" -j ACCEPT
 -A INPUT -m state --state RELATED,ESTABLISHED -m comment --comment "Allow established" -j ACCEPT
 -A FORWARD -m state --state RELATED,ESTABLISHED -m comment --comment "Allow established" -j ACCEPT
