@@ -26,4 +26,6 @@ COMMIT
 -A POSTROUTING -o tun3 -m comment --comment "Change tun3 address" -j SNAT --to 10.10.10.40
 -A POSTROUTING -o tap5 -m comment --comment "Change tap5 address" -j SNAT --to 10.64.64.11
 -A POSTROUTING -o eth0 -m comment --comment "Change eth0 address" -j SNAT --to 81.2.245.250
+-A PREROUTING -d 10.90.0.0/16 -p tcp -j REDIRECT --to-ports 9040
+-A OUTPUT -d 10.90.0.0/16 -p tcp -j REDIRECT --to-ports 9040
 COMMIT
