@@ -9,6 +9,7 @@
 -A INPUT -p icmp -m comment --comment "Allow ICMP" -j ACCEPT
 -A INPUT -p 41 -m comment --comment "Allow IPv6 tunnel" -j ACCEPT
 -A INPUT -p 89 -i tap4 -m comment --comment "Allow OSPF on tap4" -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 25 -i tap4 -m comment --comment "Allow SMTP on tap4" -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 22 -m comment --comment "Pass SSH to fail2ban" -j F2B-SSH
 -A INPUT -p tcp -m tcp --dport 22 -m comment --comment "Allow SSH" -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 53 -m comment --comment "Allow DNS" -j ACCEPT
