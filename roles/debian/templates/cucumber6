@@ -3,7 +3,7 @@
 :FORWARD DROP [0:0]
 :OUTPUT ACCEPT [0:0]
 -A INPUT -i lo -m comment --comment "Allow lo" -j ACCEPT
--a INPUT -i docker0 -m comment --comment "Allow docker0" -j ACCEPT
+-A INPUT -i docker0 -m comment --comment "Allow docker0" -j ACCEPT
 -A INPUT -i tun0 -m comment --comment "Allow tun0" -j ACCEPT
 -A INPUT -i tap0 -m comment --comment "Allow tap0" -j ACCEPT
 -A INPUT -p ipv6-icmp -m comment --comment "Allow ICMP" -j ACCEPT
