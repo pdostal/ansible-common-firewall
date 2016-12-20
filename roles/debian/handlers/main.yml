@@ -1,4 +1,6 @@
 - name: restart iptables
-  service: name=netfilter-persistent state=restarted
+  service:
+    name=netfilter-persistent
+    state=restarted
 - name: reload sysctl
   shell: sysctl -p
