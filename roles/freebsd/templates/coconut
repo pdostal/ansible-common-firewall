@@ -5,15 +5,8 @@ ipfw -q add allow all from any to any established
 ipfw -q add allow all from any to any out keep-state
 
 ipfw -q add allow all from any to any via lo0
-ipfw -q add allow all from any to any via tap0
-
 ipfw -q add allow icmp from any to any keep-state
-ipfw -q add allow ospf from any to any keep-state
 ipfw -q add allow ipv6-icmp from any to any keep-state
 ipfw -q add allow tcp from any to any 22 keep-state
-ipfw -q add allow tcp from any to any 53 keep-state
-ipfw -q add allow udp from any to any 53 keep-state
 ipfw -q add allow tcp from any to any 80 keep-state
-ipfw -q add allow tcp from any to any 113 keep-state
-ipfw -q add allow tcp from any to any 6667 keep-state
 ipfw -q add allow udp from any to any 60000-61000 keep-state

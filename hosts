@@ -1,6 +1,8 @@
 [debian]
 cucumber
+habanero
 peas
 
 [freebsd]
+coconut
 grape
