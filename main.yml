@@ -1,11 +1,11 @@
-- name: firewall
+- name: Debian firewall
   hosts: debian
   sudo: true
   roles:
-  - { role: debian, tags: debian }
+  - { role: debian, tags: debian, when: ansible_distribution == 'Debian' }
 
-- name: firewall
+- name: FreeBSD firewall
   hosts: freebsd
   sudo: true
   roles:
-  - { role: freebsd, when: ansible_distribution == 'FreeBSD' }
+  - { role: freebsd, tags: freebsd, when: ansible_distribution == 'FreeBSD' }

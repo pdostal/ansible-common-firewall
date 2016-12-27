@@ -1,57 +1,26 @@
-- name: Enable firewall
+- name: Disable ipfw
   lineinfile: >
     dest=/etc/rc.conf
     regexp=^firewall_enable=
-    line=firewall_enable=YES
-  notify: Reload ipfw
-- name: Set firewall type
+    line=firewall_enable=no
+  notify: Stop ipfw
+- name: Enable PF
   lineinfile: >
     dest=/etc/rc.conf
-    regexp=^firewall_type=
-    line=firewall_type=clossed
-  notify: Reload ipfw
-- name: Enable firewall logging
-  lineinfile: >
-    dest=/etc/rc.conf
-    regexp=^firewall_logging=
-    line=firewall_logging=YES
-  notify: Reload ipfw
-- name: Set firewall script
-  lineinfile: >
-    dest=/etc/rc.conf
-    regexp=^firewall_script=
-    line=firewall_script=/etc/ipfw.rules
-  notify: Reload ipfw
-
-- name: Set enable gateway
+    regexp=^pf_enable=
+    line=pf_enable=YES
+  notify: Reload pf
+- name: Enable gateway
   lineinfile: >
     dest=/etc/rc.conf
     regexp=^gateway_enable=
     line=gateway_enable=NO
-  notify: Reload natd
-- name: Set enable natd
-  lineinfile: >
-    dest=/etc/rc.conf
-    regexp=^natd_enable=
-    line=natd_enable=NO
-  notify: Reload natd
-- name: Set natd interface
-  lineinfile: >
-    dest=/etc/rc.conf
-    regexp=^natd_interface=
-    line=natd_interface=vtnet0
-  notify: Reload natd
-- name: Set natd flags
-  lineinfile: >
-    dest=/etc/rc.conf
-    regexp=^natd_flags=
-    line='natd_flags="-dynamic -m"'
-  notify: Reload natd
+  notify: Reload pf
 
-- name: Paste ipfw config
+- name: Paste pf config
   template: >
     src={{ ansible_hostname }}
-    dest=/etc/ipfw.rules
+    dest=/etc/pf.conf
     owner=root
     mode=0770
-  notify: Reload ipfw
+  notify: Reload pf

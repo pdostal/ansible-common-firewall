@@ -1,19 +1,23 @@
-ipfw -q -f flush
+table <bruteforcers> persist
+table <trusted> { 151.237.80.226, 46.101.158.52 }
 
-ipfw -q add check-state
-ipfw -q add allow all from any to any established
-ipfw -q add allow all from any to any out keep-state
+scrub on vtnet0 reassemble tcp no-df random-id
 
-ipfw -q add allow all from any to any via lo0
-ipfw -q add allow all from any to any via tap0
+pass out quick all keep state
 
-ipfw -q add allow icmp from any to any keep-state
-ipfw -q add allow ospf from any to any keep-state
-ipfw -q add allow ipv6-icmp from any to any keep-state
-ipfw -q add allow tcp from any to any 22 keep-state
-ipfw -q add allow tcp from any to any 53 keep-state
-ipfw -q add allow udp from any to any 53 keep-state
-ipfw -q add allow tcp from any to any 80 keep-state
-ipfw -q add allow tcp from any to any 113 keep-state
-ipfw -q add allow tcp from any to any 6667 keep-state
-ipfw -q add allow udp from any to any 60000-61000 keep-state
+pass in quick on lo0 all
+pass in quick on tap0 all
+pass in quick on tap4 all
+
+pass in quick proto tcp from <trusted> to any
+
+pass in quick inet proto icmp from any to any keep state
+pass in quick inet6 proto ipv6-icmp from any to any keep state
+
+block in all
+
+pass in proto tcp from any to any port 22 flags S/SA keep state \
+  (max-src-conn 10, max-src-conn-rate 20/60, overload <bruteforcers> flush global)
+pass in proto tcp from any to any port { 80, 443 } flags S/SA keep state
+pass in proto tcp from any to any port { 113, 6667 } flags S/SA keep state
+pass in proto udp from any to any port 60000:61000 keep state

@@ -1,8 +1,8 @@
-- name: Reload ipfw
+- name: Reload pf
+  service:
+    name=pf
+    state=restarted
+- name: Stop ipfw
   service:
     name=ipfw
-    state=restarted
-- name: Reload natd
-  service:
-    name=natd
-    state=restarted
+    state=stopped
