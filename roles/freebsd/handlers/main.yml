@@ -1,7 +1,7 @@
 - name: Reload pf
   service:
     name=pf
-    state=restarted
+    state=reloaded
 - name: Stop ipfw
   service:
     name=ipfw
