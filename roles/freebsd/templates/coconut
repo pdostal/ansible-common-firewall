@@ -6,8 +6,10 @@ scrub on vtnet0 reassemble tcp no-df random-id
 pass out quick all keep state
 
 pass in quick on lo0 all
-pass in quick on tap0 all
+pass in quick on tap3 all
+pass in quick on tun3 all
 pass in quick on tap4 all
+pass in quick on tun4 all
 
 pass in quick proto tcp from <trusted> to any
 
@@ -21,4 +23,6 @@ pass in proto tcp from any to any port 22 flags S/SA keep state \
 pass in proto tcp from any to any port 53 flags S/SAFR modulate state
 pass in proto udp from any to any port 53 keep state
 pass in proto tcp from any to any port 80 flags S/SA keep state
+pass in proto tcp from any to any port 443 flags S/SA keep state
+pass in proto tcp from any to any port 655 flags S/SA keep state
 pass in proto udp from any to any port 60000:61000 keep state
